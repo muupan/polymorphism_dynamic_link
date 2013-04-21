@@ -9,17 +9,17 @@ using std::unique_ptr;
 
 class Cat : public Animal {
 public:
-	Cat() {
-		cout << "Cat was born." << endl;
-	}
-    ~Cat() {
-    	cout << "Cat died." << endl;
-    }
-    virtual void Cry() const {
-         cout << "\"Meow\"" << endl;
-    }
+  Cat() {
+    cout << "Cat was born." << endl;
+  }
+  ~Cat() {
+    cout << "Cat died." << endl;
+  }
+  virtual void Cry() const {
+     cout << "\"Meow\"" << endl;
+  }
 };
 
 extern "C" unique_ptr<Animal> Create() {
-    return unique_ptr<Animal>(new Cat);
+  return unique_ptr<Animal>(new Cat);
 }
