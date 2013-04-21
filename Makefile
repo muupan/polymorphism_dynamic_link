@@ -13,9 +13,6 @@ $(TARGETS):
 .cpp.so:
 	$(CXX) $(CXXFLAGS) -shared $< -o $@
 
-# $(DYLIBS): $(DYLIB_SRCS)
-# 	$(CXX) $(CXXFLAGS) -shared $< -o $@
-
 .PHONY: clean
 clean:
 	$(RM) *.o *.so $(TARGETS)
