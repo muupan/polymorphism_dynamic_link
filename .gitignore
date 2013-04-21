@@ -1,0 +1,7 @@
+.cproject
+.project
+a.out
+*.o
+*.so
+*.dSYM
+*.swp
