@@ -1,6 +1,5 @@
 #include <iostream>
 #include <memory>
-#include <cmath>
 #include "animal.hpp"
 
 using std::cout;
