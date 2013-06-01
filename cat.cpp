@@ -14,7 +14,7 @@ public:
   ~Cat() {
     cout << "Cat died." << endl;
   }
-  virtual void Cry() const {
+  void Cry() const override {
      cout << "\"Meow\"" << endl;
   }
 };

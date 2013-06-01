@@ -14,7 +14,7 @@ public:
   ~Dog() {
     cout << "Dog died." << endl;
   }
-  virtual void Cry() const {
+  virtual void Cry() const override {
      cout << "\"Bow-wow\"" << endl;
   }
 };
