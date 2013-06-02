@@ -8,8 +8,8 @@ using std::endl;
 using std::string;
 
 void *LoadFuncOrDie(void *lib, const string& func_name) {
-  void* func = dlsym(lib, func_name.c_str());
-  const char* dlsym_error = dlerror();
+  const auto func = dlsym(lib, func_name.c_str());
+  const auto dlsym_error = dlerror();
   if (dlsym_error) {
     cerr << "Cannot load symbol create: " << dlsym_error << endl;
     dlclose(lib);
@@ -19,7 +19,7 @@ void *LoadFuncOrDie(void *lib, const string& func_name) {
 }
 
 void *LoadLibOrDie(const string& path) {
-  void *lib = dlopen(path.c_str(), RTLD_LAZY);
+  const auto lib = dlopen(path.c_str(), RTLD_LAZY);
   if (!lib) {
     cerr << "Cannot load library: " << dlerror() << endl;
     exit(EXIT_FAILURE);
@@ -30,8 +30,8 @@ void *LoadLibOrDie(const string& path) {
 int main(int argc, char **argv) {
   const auto catlib = LoadLibOrDie("./cat.so");
   const auto doglib = LoadLibOrDie("./dog.so");
-  const AnimalCreateFunc* CreateCat = (AnimalCreateFunc*) LoadFuncOrDie(catlib, "Create");
-  const AnimalCreateFunc* CreateDog = (AnimalCreateFunc*) LoadFuncOrDie(doglib, "Create");
+  const auto CreateCat = static_cast<AnimalCreateFunc*>(LoadFuncOrDie(catlib, "Create"));
+  const auto CreateDog = static_cast<AnimalCreateFunc*>(LoadFuncOrDie(doglib, "Create"));
   {
     const auto& cat = CreateCat();
     cat->Cry();
